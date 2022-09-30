@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, loginWithFirebase, selectUser, signOut } from './features/userSlice';
+import { auth, onAuthStateChanged } from './api/firebase';
 import './App.css';
 
 function App() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        // user is logged in
+        dispatch(
+          login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            name: userAuth.displayName,
+          })
+        );
+      }
+    });
+  }, [dispatch]);
+
+  const loginToApp = () => {
+    dispatch(loginWithFirebase());
+  };
+
+  const logoutOfApp = () => {
+    dispatch(signOut());
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!user ? (
+        // display the login form
+        <button onClick={loginToApp}>Login</button>
+      ) : (
+        // display the rest of the app
+        <button onClick={logoutOfApp}>Logout</button>
+      )}
     </div>
   );
 }
