@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, loginWithFirebase, selectUser, signOut } from './features/userSlice';
 import { auth, onAuthStateChanged } from './api/firebase';
+import { Header } from './components/Header/Header';
 import './App.css';
 
 function App() {
@@ -33,13 +34,33 @@ function App() {
 
   return (
     <div className="App">
-      {!user ? (
-        // display the login form
-        <button onClick={loginToApp}>Login</button>
-      ) : (
-        // display the rest of the app
-        <button onClick={logoutOfApp}>Logout</button>
-      )}
+      <Header />
+
+      <div>
+        {!user ? (
+          // display the login form
+          <button onClick={loginToApp}>Login</button>
+        ) : (
+          // display the rest of the app
+          <button onClick={logoutOfApp}>Logout</button>
+        )}
+      </div>
+      <div className="row">
+        <div className="col">
+          <h2>list tasks</h2>
+          <ol>
+            <li>task 1</li>
+            <li>task 2
+              <div>
+                task 2
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div className="col">
+          <h2>lorem ipsum</h2>
+        </div>
+      </div>
     </div>
   );
 }

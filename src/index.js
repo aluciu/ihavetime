@@ -6,6 +6,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faClock, faCheck, faSquare } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faClock, faCheck, faSquare);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
