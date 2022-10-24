@@ -1,0 +1,29 @@
+.task {
+  display: flex;
+  padding: 6px 0;
+  margin-bottom: 6px;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.task:hover {
+  border-bottom: 1px solid #3C2A4D;
+}
+
+.task.done {
+  text-decoration: line-through;
+}
+
+.task .status {
+  flex: none;
+}
+
+.task .description {
+  flex-grow: 1;
+  padding: 0 6px;
+}
+
+.task .time {
+  flex: none;
+}

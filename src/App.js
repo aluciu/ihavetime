@@ -4,6 +4,22 @@ import { login, loginWithFirebase, selectUser, signOut } from './features/userSl
 import { auth, onAuthStateChanged } from './api/firebase';
 import { Header } from './components/Header/Header';
 import './App.css';
+import { Task } from './components/Task/Task';
+
+const tasks = [
+  {
+    id: 1,
+    status: "done",
+    description: "make some pasta",
+    time: 30
+  },
+  {
+    id: 2,
+    status: "open",
+    description: "boil some water",
+    time: 15
+  }
+];
 
 function App() {
   const user = useSelector(selectUser);
@@ -48,13 +64,8 @@ function App() {
       <div className="row">
         <div className="col">
           <h2>list tasks</h2>
-          <ol>
-            <li>task 1</li>
-            <li>task 2
-              <div>
-                task 2
-              </div>
-            </li>
+          <ol className="listTasks">
+            {tasks.map((task) => <li key={task.id}><Task data={task} /></li>)}
           </ol>
         </div>
         <div className="col">

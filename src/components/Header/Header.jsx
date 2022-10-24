@@ -8,10 +8,6 @@ export const Header = () => {
       <div className="logo">
         <FontAwesomeIcon icon="fa-solid fa-clock" className="icon" />
         I Have Time
-        <span className="fa-layers fa-fw">
-          <FontAwesomeIcon icon="fa-solid fa-square" />
-          <FontAwesomeIcon icon="fa-solid fa-check" transform="shrink-8" inverse />
-        </span>
       </div>
       <nav className="menu">
         <ul>
