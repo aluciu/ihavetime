@@ -19,6 +19,21 @@
   font-weight: 700;
 }
 
+.menu button {
+  border: none;
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  color: #3C2A4D;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.menu button:hover {
+  color: red;
+}
+
 .menu ul {
   margin: 0;
   padding: 0;
